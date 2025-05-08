@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulir Pendaftaran - SMA Negeri 1 Jaten</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between">
+                <div class="flex space-x-7">
+                    <div>
+                        <a href="index.html" class="flex items-center py-4">
+                            <span class="font-semibold text-gray-700 text-lg">SMAN 1 JATEN</span>
+                        </a>
+                    </div>
+                </div>
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button class="outline-none mobile-menu-button">
+                        <i class="fas fa-bars text-gray-400 text-lg"></i>
+                    </button>
+                </div>
+                <!-- Navigation Links -->
+                <div class="hidden md:flex items-center space-x-3">
+                    <a href="index.html" class="py-4 px-2 text-gray-500 font-semibold hover:text-blue-500 transition duration-300">Beranda</a>
+                    <a href="profile.html" class="py-4 px-2 text-gray-500 font-semibold hover:text-blue-500 transition duration-300">Profil</a>
+                    <a href="registration-info.html" class="py-4 px-2 text-gray-500 font-semibold hover:text-blue-500 transition duration-300">PPDB</a>
+                    <a href="register.html" class="py-4 px-2 text-blue-500 border-b-4 border-blue-500 font-semibold">Pendaftaran</a>
+                    <a href="participants.html" class="py-4 px-2 text-gray-500 font-semibold hover:text-blue-500 transition duration-300">Peserta</a>
+                    <a href="contact.html" class="py-4 px-2 text-gray-500 font-semibold hover:text-blue-500 transition duration-300">Kontak</a>
+                    <a href="news.html" class="py-4 px-2 text-gray-500 font-semibold hover:text-blue-500 transition duration-300">Berita</a>
+                    <a href="gallery.html" class="py-4 px-2 text-gray-500 font-semibold hover:text-blue-500 transition duration-300">Galeri</a>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div class="hidden mobile-menu">
+            <ul class="pt-4 pb-3">
+                <li><a href="index.html" class="block text-sm px-2 py-4 hover:bg-blue-500 hover:text-white transition duration-300">Beranda</a></li>
+                <li><a href="profile.html" class="block text-sm px-2 py-4 hover:bg-blue-500 hover:text-white transition duration-300">Profil</a></li>
+                <li><a href="registration-info.html" class="block text-sm px-2 py-4 hover:bg-blue-500 hover:text-white transition duration-300">PPDB</a></li>
+                <li><a href="register.html" class="block text-sm px-2 py-4 text-white bg-blue-500 font-semibold">Pendaftaran</a></li>
+                <li><a href="participants.html" class="block text-sm px-2 py-4 hover:bg-blue-500 hover:text-white transition duration-300">Peserta</a></li>
+                <li><a href="contact.html" class="block text-sm px-2 py-4 hover:bg-blue-500 hover:text-white transition duration-300">Kontak</a></li>
+                <li><a href="news.html" class="block text-sm px-2 py-4 hover:bg-blue-500 hover:text-white transition duration-300">Berita</a></li>
+                <li><a href="gallery.html" class="block text-sm px-2 py-4 hover:bg-blue-500 hover:text-white transition duration-300">Galeri</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <div class="bg-blue-600 py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h1 class="text-4xl font-bold text-white text-center">Formulir Pendaftaran</h1>
+            <p class="mt-4 text-xl text-white text-center">PPDB SMAN 1 Jaten Tahun Ajaran 2024/2025</p>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <!-- Alert Container -->
+        <div id="alertContainer" class="mb-6 hidden">
+            <!-- Alert will be inserted here via JavaScript -->
+        </div>
+
+        <!-- Registration Form -->
+        <div class="bg-white rounded-lg shadow-md p-8">
+            <form id="registrationForm" class="space-y-6">
+                <!-- Personal Information -->
+                <div class="space-y-6">
+                    <h2 class="text-xl font-semibold text-gray-800 border-b pb-2">Data Pribadi</h2>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- Full Name -->
+                        <div>
+                            <label for="fullName" class="block text-sm font-medium text-gray-700">Nama Lengkap</label>
+                            <input type="text" id="fullName" name="fullName" required
+                                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                        </div>
+
+                        <!-- NISN -->
+                        <div>
+                            <label for="nisn" class="block text-sm font-medium text-gray-700">NISN</label>
+                            <input type="text" id="nisn" name="nisn" required
+                                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                        </div>
+
+                        <!-- Birth Place -->
+                        <div>
+                            <label for="birthPlace" class="block text-sm font-medium text-gray-700">Tempat Lahir</label>
+                            <input type="text" id="birthPlace" name="birthPlace" required
+                                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                        </div>
+
+                        <!-- Birth Date -->
+                        <div>
+                            <label for="birthDate" class="block text-sm font-medium text-gray-700">Tanggal Lahir</label>
+                            <input type="date" id="birthDate" name="birthDate" required
+                                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                        </div>
+
+                        <!-- Gender -->
+                        <div>
+                            <label for="gender" class="block text-sm font-medium text-gray-700">Jenis Kelamin</label>
+                            <select id="gender" name="gender" required
+                                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                                <option value="">Pilih Jenis Kelamin</option>
+                                <option value="L">Laki-laki</option>
+                                <option value="P">Perempuan</option>
+                            </select>
+                        </div>
+
+                        <!-- Religion -->
+                        <div>
+                            <label for="religion" class="block text-sm font-medium text-gray-700">Agama</label>
+                            <select id="religion" name="religion" required
+                                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                                <option value="">Pilih Agama</option>
+                                <option value="Islam">Islam</option>
+                                <option value="Kristen">Kristen</option>
+                                <option value="Katolik">Katolik</option>
+                                <option value="Hindu">Hindu</option>
+                                <option value="Buddha">Buddha</option>
+                                <option value="Konghucu">Konghucu</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Information -->
+                <div class="space-y-6">
+                    <h2 class="text-xl font-semibold text-gray-800 border-b pb-2">Informasi Kontak</h2>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- Phone -->
+                        <div>
+                            <label for="phone" class="block text-sm font-medium text-gray-700">Nomor Telepon</label>
+                            <input type="tel" id="phone" name="phone" required
+                                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                        </div>
+
+                        <!-- Email -->
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+                            <input type="email" id="email" name="email" required
+                                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                        </div>
+                    </div>
+
+                    <!-- Address -->
+                    <div>
+                        <label for="address" class="block text-sm font-medium text-gray-700">Alamat Lengkap</label>
+                        <textarea id="address" name="address" rows="3" required
+                            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"></textarea>
+                    </div>
+                </div>
+
+                <!-- School Information -->
+                <div class="space-y-6">
+                    <h2 class="text-xl font-semibold text-gray-800 border-b pb-2">Informasi Sekolah Asal</h2>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- Previous School -->
+                        <div>
+                            <label for="previousSchool" class="block text-sm font-medium text-gray-700">Nama Sekolah Asal</label>
+                            <input type="text" id="previousSchool" name="previousSchool" required
+                                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                        </div>
+
+                        <!-- Graduation Year -->
+                        <div>
+                            <label for="graduationYear" class="block text-sm font-medium text-gray-700">Tahun Lulus</label>
+                            <input type="number" id="graduationYear" name="graduationYear" min="2020" max="2024" required
+                                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Parent Information -->
+                <div class="space-y-6">
+                    <h2 class="text-xl font-semibold text-gray-800 border-b pb-2">Data Orang Tua</h2>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- Father's Name -->
+                        <div>
+                            <label for="fatherName" class="block text-sm font-medium text-gray-700">Nama Ayah</label>
+                            <input type="text" id="fatherName" name="fatherName" required
+                                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                        </div>
+
+                        <!-- Mother's Name -->
+                        <div>
+                            <label for="motherName" class="block text-sm font-medium text-gray-700">Nama Ibu</label>
+                            <input type="text" id="motherName" name="motherName" required
+                                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                        </div>
+
+                        <!-- Parent's Phone -->
+                        <div>
+                            <label for="parentPhone" class="block text-sm font-medium text-gray-700">Nomor Telepon Orang Tua</label>
+                            <input type="tel" id="parentPhone" name="parentPhone" required
+                                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                        </div>
+
+                        <!-- Parent's Occupation -->
+                        <div>
+                            <label for="parentOccupation" class="block text-sm font-medium text-gray-700">Pekerjaan Orang Tua</label>
+                            <input type="text" id="parentOccupation" name="parentOccupation" required
+                                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="pt-6">
+                    <button type="submit"
+                        class="w-full bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition duration-300">
+                        Kirim Pendaftaran
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white">
+        <div class="max-w-7xl mx-auto px-4 py-12 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Contact Info -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Kontak Kami</h3>
+                    <p class="mb-2"><i class="fas fa-phone mr-2"></i>081391977646</p>
+                    <p class="mb-2"><i class="fas fa-map-marker-alt mr-2"></i>Jl. Jaten, Juwiring, Klaten, Jawa Tengah</p>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Link Cepat</h3>
+                    <ul>
+                        <li class="mb-2"><a href="profile.html" class="hover:text-blue-400">Profil Sekolah</a></li>
+                        <li class="mb-2"><a href="registration-info.html" class="hover:text-blue-400">Informasi PPDB</a></li>
+                        <li class="mb-2"><a href="contact.html" class="hover:text-blue-400">Hubungi Kami</a></li>
+                    </ul>
+                </div>
+
+                <!-- Social Media -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Media Sosial</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" class="hover:text-blue-400"><i class="fab fa-facebook text-2xl"></i></a>
+                        <a href="#" class="hover:text-blue-400"><i class="fab fa-twitter text-2xl"></i></a>
+                        <a href="#" class="hover:text-blue-400"><i class="fab fa-instagram text-2xl"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-8 pt-8 border-t border-gray-700 text-center">
+                <p>&copy; 2024 SMA Negeri 1 Jaten. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile menu functionality
+        const btn = document.querySelector("button.mobile-menu-button");
+        const menu = document.querySelector(".mobile-menu");
+
+        btn.addEventListener("click", () => {
+            menu.classList.toggle("hidden");
+        });
+
+        // Form handling
+        document.getElementById('registrationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Get form data
+            const formData = new FormData(this);
+            const data = {};
+            formData.forEach((value, key) => {
+                data[key] = value;
+            });
+
+            // Get existing registrations or initialize empty array
+            let registrations = JSON.parse(localStorage.getItem('registrations') || '[]');
+
+            // Add new registration
+            registrations.push(data);
+
+            // Save to localStorage
+            localStorage.setItem('registrations', JSON.stringify(registrations));
+
+            // Show success message
+            showAlert('Pendaftaran berhasil! Data Anda telah tersimpan.', 'success');
+
+            // Reset form
+            this.reset();
+
+            // Redirect to participants page after 2 seconds
+            setTimeout(() => {
+                window.location.href = 'participants.html';
+            }, 2000);
+        });
+
+        // Function to show alert
+        function showAlert(message, type) {
+            const alertContainer = document.getElementById('alertContainer');
+            const alertClass = type === 'success' ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700';
+            
+            alertContainer.innerHTML = `
+                <div class="p-4 rounded-md ${alertClass}">
+                    <p>${message}</p>
+                </div>
+            `;
+            
+            alertContainer.classList.remove('hidden');
+
+            // Hide alert after 5 seconds
+            setTimeout(() => {
+                alertContainer.classList.add('hidden');
+            }, 5000);
+        }
+    </script>
+</body>
+</html>
