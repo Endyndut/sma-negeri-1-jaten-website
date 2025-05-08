@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daftar Peserta - SMA Negeri 1 Jaten</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between">
+                <div class="flex space-x-7">
+                    <div>
+                        <a href="index.html" class="flex items-center py-4">
+                            <span class="font-semibold text-gray-700 text-lg">SMAN 1 JATEN</span>
+                        </a>
+                    </div>
+                </div>
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button class="outline-none mobile-menu-button">
+                        <i class="fas fa-bars text-gray-400 text-lg"></i>
+                    </button>
+                </div>
+                <!-- Navigation Links -->
+                <div class="hidden md:flex items-center space-x-3">
+                    <a href="index.html" class="py-4 px-2 text-gray-500 font-semibold hover:text-blue-500 transition duration-300">Beranda</a>
+                    <a href="profile.html" class="py-4 px-2 text-gray-500 font-semibold hover:text-blue-500 transition duration-300">Profil</a>
+                    <a href="registration-info.html" class="py-4 px-2 text-gray-500 font-semibold hover:text-blue-500 transition duration-300">PPDB</a>
+                    <a href="register.html" class="py-4 px-2 text-gray-500 font-semibold hover:text-blue-500 transition duration-300">Pendaftaran</a>
+                    <a href="participants.html" class="py-4 px-2 text-blue-500 border-b-4 border-blue-500 font-semibold">Peserta</a>
+                    <a href="contact.html" class="py-4 px-2 text-gray-500 font-semibold hover:text-blue-500 transition duration-300">Kontak</a>
+                    <a href="news.html" class="py-4 px-2 text-gray-500 font-semibold hover:text-blue-500 transition duration-300">Berita</a>
+                    <a href="gallery.html" class="py-4 px-2 text-gray-500 font-semibold hover:text-blue-500 transition duration-300">Galeri</a>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div class="hidden mobile-menu">
+            <ul class="pt-4 pb-3">
+                <li><a href="index.html" class="block text-sm px-2 py-4 hover:bg-blue-500 hover:text-white transition duration-300">Beranda</a></li>
+                <li><a href="profile.html" class="block text-sm px-2 py-4 hover:bg-blue-500 hover:text-white transition duration-300">Profil</a></li>
+                <li><a href="registration-info.html" class="block text-sm px-2 py-4 hover:bg-blue-500 hover:text-white transition duration-300">PPDB</a></li>
+                <li><a href="register.html" class="block text-sm px-2 py-4 hover:bg-blue-500 hover:text-white transition duration-300">Pendaftaran</a></li>
+                <li><a href="participants.html" class="block text-sm px-2 py-4 text-white bg-blue-500 font-semibold">Peserta</a></li>
+                <li><a href="contact.html" class="block text-sm px-2 py-4 hover:bg-blue-500 hover:text-white transition duration-300">Kontak</a></li>
+                <li><a href="news.html" class="block text-sm px-2 py-4 hover:bg-blue-500 hover:text-white transition duration-300">Berita</a></li>
+                <li><a href="gallery.html" class="block text-sm px-2 py-4 hover:bg-blue-500 hover:text-white transition duration-300">Galeri</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <div class="bg-blue-600 py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h1 class="text-4xl font-bold text-white text-center">Daftar Peserta PPDB</h1>
+            <p class="mt-4 text-xl text-white text-center">SMAN 1 Jaten Tahun Ajaran 2024/2025</p>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <!-- Alert Container -->
+        <div id="alertContainer" class="mb-6 hidden">
+            <!-- Alert will be inserted here via JavaScript -->
+        </div>
+
+        <!-- Search and Filter Section -->
+        <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                <!-- Search -->
+                <div class="flex-1">
+                    <input type="text" id="searchInput" placeholder="Cari berdasarkan nama atau NISN..."
+                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500">
+                </div>
+                <!-- Clear Data Button (For demo purposes) -->
+                <div>
+                    <button id="clearDataBtn" class="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition duration-300">
+                        Hapus Semua Data
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Participants Table -->
+        <div class="bg-white rounded-lg shadow-md overflow-hidden">
+            <div class="overflow-x-auto">
+                <table class="min-w-full divide-y divide-gray-200">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">No</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nama Lengkap</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">NISN</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Asal Sekolah</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Detail</th>
+                        </tr>
+                    </thead>
+                    <tbody id="participantsTableBody" class="bg-white divide-y divide-gray-200">
+                        <!-- Table rows will be inserted here via JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+            <!-- Empty State -->
+            <div id="emptyState" class="hidden p-8 text-center">
+                <i class="fas fa-users text-gray-400 text-5xl mb-4"></i>
+                <p class="text-gray-500 text-lg">Belum ada data peserta yang terdaftar</p>
+                <a href="register.html" class="inline-block mt-4 px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition duration-300">
+                    Daftar Sekarang
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for Participant Details -->
+    <div id="detailModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center">
+        <div class="bg-white rounded-lg max-w-2xl w-full mx-4 max-h-[90vh] overflow-y-auto">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-6">
+                    <h3 class="text-2xl font-bold text-gray-800">Detail Peserta</h3>
+                    <button onclick="closeModal()" class="text-gray-500 hover:text-gray-700">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+                </div>
+                <div id="modalContent">
+                    <!-- Modal content will be inserted here via JavaScript -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white">
+        <div class="max-w-7xl mx-auto px-4 py-12 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Contact Info -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Kontak Kami</h3>
+                    <p class="mb-2"><i class="fas fa-phone mr-2"></i>081391977646</p>
+                    <p class="mb-2"><i class="fas fa-map-marker-alt mr-2"></i>Jl. Jaten, Juwiring, Klaten, Jawa Tengah</p>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Link Cepat</h3>
+                    <ul>
+                        <li class="mb-2"><a href="profile.html" class="hover:text-blue-400">Profil Sekolah</a></li>
+                        <li class="mb-2"><a href="registration-info.html" class="hover:text-blue-400">Informasi PPDB</a></li>
+                        <li class="mb-2"><a href="contact.html" class="hover:text-blue-400">Hubungi Kami</a></li>
+                    </ul>
+                </div>
+
+                <!-- Social Media -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Media Sosial</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" class="hover:text-blue-400"><i class="fab fa-facebook text-2xl"></i></a>
+                        <a href="#" class="hover:text-blue-400"><i class="fab fa-twitter text-2xl"></i></a>
+                        <a href="#" class="hover:text-blue-400"><i class="fab fa-instagram text-2xl"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-8 pt-8 border-t border-gray-700 text-center">
+                <p>&copy; 2024 SMA Negeri 1 Jaten. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile menu functionality
+        const btn = document.querySelector("button.mobile-menu-button");
+        const menu = document.querySelector(".mobile-menu");
+
+        btn.addEventListener("click", () => {
+            menu.classList.toggle("hidden");
+        });
+
+        // Load and display participants
+        function loadParticipants() {
+            const tableBody = document.getElementById('participantsTableBody');
+            const emptyState = document.getElementById('emptyState');
+            const registrations = JSON.parse(localStorage.getItem('registrations') || '[]');
+
+            if (registrations.length === 0) {
+                tableBody.innerHTML = '';
+                emptyState.classList.remove('hidden');
+                return;
+            }
+
+            emptyState.classList.add('hidden');
+            tableBody.innerHTML = registrations.map((participant, index) => `
+                <tr>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${index + 1}</td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <div class="text-sm font-medium text-gray-900">${participant.fullName}</div>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <div class="text-sm text-gray-900">${participant.nisn}</div>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <div class="text-sm text-gray-900">${participant.previousSchool}</div>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <button onclick="showParticipantDetails(${index})" 
+                            class="text-blue-600 hover:text-blue-900">
+                            <i class="fas fa-eye"></i> Lihat Detail
+                        </button>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        // Search functionality
+        document.getElementById('searchInput').addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            const tableBody = document.getElementById('participantsTableBody');
+            const registrations = JSON.parse(localStorage.getItem('registrations') || '[]');
+
+            const filteredRegistrations = registrations.filter(participant => 
+                participant.fullName.toLowerCase().includes(searchTerm) ||
+                participant.nisn.toLowerCase().includes(searchTerm)
+            );
+
+            tableBody.innerHTML = filteredRegistrations.map((participant, index) => `
+                <tr>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${index + 1}</td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <div class="text-sm font-medium text-gray-900">${participant.fullName}</div>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <div class="text-sm text-gray-900">${participant.nisn}</div>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <div class="text-sm text-gray-900">${participant.previousSchool}</div>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <button onclick="showParticipantDetails(${index})" 
+                            class="text-blue-600 hover:text-blue-900">
+                            <i class="fas fa-eye"></i> Lihat Detail
+                        </button>
+                    </td>
+                </tr>
+            `).join('');
+        });
+
+        // Show participant details in modal
+        function showParticipantDetails(index) {
+            const registrations = JSON.parse(localStorage.getItem('registrations') || '[]');
+            const participant = registrations[index];
+            const modal = document.getElementById('detailModal');
+            const modalContent = document.getElementById('modalContent');
+
+            modalContent.innerHTML = `
+                <div class="space-y-6">
+                    <div class="border-b pb-4">
+                        <h4 class="text-lg font-semibold text-gray-800 mb-2">Data Pribadi</h4>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <p class="text-sm text-gray-600">Nama Lengkap</p>
+                                <p class="text-gray-900">${participant.fullName}</p>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-600">NISN</p>
+                                <p class="text-gray-900">${participant.nisn}</p>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-600">Tempat Lahir</p>
+                                <p class="text-gray-900">${participant.birthPlace}</p>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-600">Tanggal Lahir</p>
+                                <p class="text-gray-900">${participant.birthDate}</p>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-600">Jenis Kelamin</p>
+                                <p class="text-gray-900">${participant.gender === 'L' ? 'Laki-laki' : 'Perempuan'}</p>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-600">Agama</p>
+                                <p class="text-gray-900">${participant.religion}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="border-b pb-4">
+                        <h4 class="text-lg font-semibold text-gray-800 mb-2">Informasi Kontak</h4>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <p class="text-sm text-gray-600">Nomor Telepon</p>
+                                <p class="text-gray-900">${participant.phone}</p>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-600">Email</p>
+                                <p class="text-gray-900">${participant.email}</p>
+                            </div>
+                            <div class="col-span-2">
+                                <p class="text-sm text-gray-600">Alamat</p>
+                                <p class="text-gray-900">${participant.address}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="border-b pb-4">
+                        <h4 class="text-lg font-semibold text-gray-800 mb-2">Informasi Sekolah</h4>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <p class="text-sm text-gray-600">Sekolah Asal</p>
+                                <p class="text-gray-900">${participant.previousSchool}</p>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-600">Tahun Lulus</p>
+                                <p class="text-gray-900">${participant.graduationYear}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h4 class="text-lg font-semibold text-gray-800 mb-2">Data Orang Tua</h4>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <p class="text-sm text-gray-600">Nama Ayah</p>
+                                <p class="text-gray-900">${participant.fatherName}</p>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-600">Nama Ibu</p>
+                                <p class="text-gray-900">${participant.motherName}</p>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-600">Nomor Telepon Orang Tua</p>
+                                <p class="text-gray-900">${participant.parentPhone}</p>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-600">Pekerjaan Orang Tua</p>
+                                <p class="text-gray-900">${participant.parentOccupation}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        // Close modal
+        function closeModal() {
+            const modal = document.getElementById('detailModal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        // Clear all data
+        document.getElementById('clearDataBtn').addEventListener('click', function() {
+            if (confirm('Apakah Anda yakin ingin menghapus semua data pendaftaran? Tindakan ini tidak dapat dibatalkan.')) {
+                localStorage.removeItem('registrations');
+                loadParticipants();
+                showAlert('Semua data telah dihapus.', 'success');
+            }
+        });
+
+        // Function to show alert
+        function showAlert(message, type) {
+            const alertContainer = document.getElementById('alertContainer');
+            const alertClass = type === 'success' ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700';
+            
+            alertContainer.innerHTML = `
+                <div class="p-4 rounded-md ${alertClass}">
+                    <p>${message}</p>
+                </div>
+            `;
+            
+            alertContainer.classList.remove('hidden');
+
+            // Hide alert after 5 seconds
+            setTimeout(() => {
+                alertContainer.classList.add('hidden');
+            }, 5000);
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('detailModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+
+        // Load participants when page loads
+        document.addEventListener('DOMContentLoaded', loadParticipants);
+    </script>
+</body>
+</html>
